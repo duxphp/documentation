@@ -1,61 +1,64 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "DuxCMS",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#366ef4",
+    "light": "#618dff",
+    "dark": "#366ef4",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#366ef4",
+      "to": "#0052d9"
     }
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "支持",
+      "url": "https://www.dux.cn"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Github",
+    "url": "https://github.com/duxweb/duxcms"
+  },
+  "primaryTab": {
+    "name": "使用文档"
   },
   "tabs": [
     {
-      "name": "API Reference",
+      "name": "API 接口",
       "url": "api-reference"
     }
   ],
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "阅读文档",
       "icon": "book-open-cover",
       "url": "https://mintlify.com/docs"
     },
     {
-      "name": "Community",
+      "name": "官方网站",
       "icon": "slack",
       "url": "https://mintlify.com/community"
     },
     {
-      "name": "Blog",
+      "name": "应用市场",
       "icon": "newspaper",
       "url": "https://mintlify.com/blog"
     }
   ],
   "navigation": [
     {
-      "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "group": "开始",
+      "pages": ["introduction", "guide/quickstart", "guide/development"]
     },
     {
-      "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+      "group": "使用",
+      "pages": ["use/base", "use/article", "use/menu", "use/page", "use/setting", "use/theme", "use/authority", "use/backup", "use/faq"]
     },
     {
       "group": "API Documentation",
@@ -71,8 +74,6 @@
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "github": "https://github.com/duxweb"
   }
 }

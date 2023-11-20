@@ -1,88 +1,43 @@
 ---
 title: '管理菜单'
-description: 'Text, title, and styling in standard markdown'
+description: '通过菜单管理可以设置多组树形菜单供前端使用'
 icon: 'bars'
 ---
 
-## Titles
+## 菜单组管理
 
-Best used for section headers.
+在菜单列表中通过菜单组筛选中的 `+` 按钮进行菜单组的添加，通过选中菜单组右边按钮可进行编辑和删除菜单组。
 
-```md
-## Titles
-```
+### 菜单组名
 
-### Subtitles
+菜单组名应该使用`英文数组加下划线`进行命名，主要用于前端调用时的标识符。
 
-Best use to subsection headers.
+### 菜单描述
 
-```md
-### Subtitles
-```
+菜单组的描述信息，筛选、添加菜单时菜单组选中项的名称。
 
-<Tip>
 
-Each **title** and **subtitle** creates an anchor and also shows up on the table of contents on the right.
+## 菜单管理
 
-</Tip>
+选中一个菜单组后可以通过创建按钮进行菜单创建。
 
-## Text Formatting
 
-We support most markdown formatting. Simply add `**`, `_`, or `~` around text to format it.
+### 上级菜单
 
-| Style         | How to write it   | Result          |
-| ------------- | ----------------- | --------------- |
-| Bold          | `**bold**`        | **bold**        |
-| Italic        | `_italic_`        | _italic_        |
-| Strikethrough | `~strikethrough~` | ~strikethrough~ |
+选择上级关联菜单，如果不选择择为顶级菜单。
 
-You can combine these. For example, write `**_bold and italic_**` to get **_bold and italic_** text.
+### 菜单标题
 
-You need to use HTML to write superscript and subscript text. That is, add `<sup>` or `<sub>` around your text.
+菜单的标题名称。
 
-| Text Size   | How to write it          | Result                 |
-| ----------- | ------------------------ | ---------------------- |
-| Superscript | `<sup>superscript</sup>` | <sup>superscript</sup> |
-| Subscript   | `<sub>subscript</sub>`   | <sub>subscript</sub>   |
+### 菜单副标题
 
-## Linking to Pages
+菜单的副标题名称。
 
-You can add a link by wrapping text in `[]()`. You would write `[link to google](https://google.com)` to [link to google](https://google.com).
+### 菜单链接
 
-Links to pages in your docs need to be root-relative. Basically, you should include the entire folder path. For example, `[link to text](/writing-content/text)` links to the page "Text" in our components section.
+根据使用需求填写菜单的链接，可以为 `http(s)` 的链接，也可以为小程序或者 APP 的协议链接，具体根据使用需求填写。
 
-Relative links like `[link to text](../text)` will open slower because we cannot optimize them as easily.
+### 菜单图片
 
-## Blockquotes
-
-### Singleline
-
-To create a blockquote, add a `>` in front of a paragraph.
-
-> Dorothy followed her through many of the beautiful rooms in her castle.
-
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
-```
-
-### Multiline
-
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
-
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
-```
-
-### LaTeX
-
-Mintlify supports [LaTeX](https://www.latex-project.org) through the Latex component.
-
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
-
-```md
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
-```
+设置菜单的图片或者菜单的图标。

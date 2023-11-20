@@ -1,88 +1,44 @@
 ---
 title: '用户与权限'
-description: 'Text, title, and styling in standard markdown'
+description: '管理后台的用户和角色，角色可设置操作权限。'
 icon: 'users'
 ---
 
-## Titles
+## 角色管理
 
-Best used for section headers.
+可添加多个角色供后台用户绑定，一个后台用户可绑定多个角色。
 
-```md
-## Titles
-```
+### 权限
 
-### Subtitles
+用户权限最小粒度为到每个模块操作权限，权限自动关联后台左侧菜单，设置当前用户权限后需要刷新浏览器页面或重新登录则可使菜单生效。
 
-Best use to subsection headers.
+## 用户管理
 
-```md
-### Subtitles
-```
+### 角色
 
-<Tip>
+一个用户可绑定多个角色，多个角色的权限会自动合并鉴权。
 
-Each **title** and **subtitle** creates an anchor and also shows up on the table of contents on the right.
+### 用户名
 
-</Tip>
+用户登录用户名。
 
-## Text Formatting
+### 昵称
 
-We support most markdown formatting. Simply add `**`, `_`, or `~` around text to format it.
+用户姓名或代号名称。
 
-| Style         | How to write it   | Result          |
-| ------------- | ----------------- | --------------- |
-| Bold          | `**bold**`        | **bold**        |
-| Italic        | `_italic_`        | _italic_        |
-| Strikethrough | `~strikethrough~` | ~strikethrough~ |
+### 头像
 
-You can combine these. For example, write `**_bold and italic_**` to get **_bold and italic_** text.
+用户头像，如果不上传则取昵称第一个字符为头像。
 
-You need to use HTML to write superscript and subscript text. That is, add `<sup>` or `<sub>` around your text.
+### 密码
 
-| Text Size   | How to write it          | Result                 |
-| ----------- | ------------------------ | ---------------------- |
-| Superscript | `<sup>superscript</sup>` | <sup>superscript</sup> |
-| Subscript   | `<sub>subscript</sub>`   | <sub>subscript</sub>   |
+登录密码，创建时必须输入密码，编辑时如果不输入则保持原密码。
 
-## Linking to Pages
+### 状态
 
-You can add a link by wrapping text in `[]()`. You would write `[link to google](https://google.com)` to [link to google](https://google.com).
+禁用后该用户则无法登录后台。
 
-Links to pages in your docs need to be root-relative. Basically, you should include the entire folder path. For example, `[link to text](/writing-content/text)` links to the page "Text" in our components section.
+## 操作记录
 
-Relative links like `[link to text](../text)` will open slower because we cannot optimize them as easily.
+用户的每个操作均详细进行了记录，通过该列表可以查看用户的操作记录已方便后期溯源，该记录不可通过后台删除。
 
-## Blockquotes
-
-### Singleline
-
-To create a blockquote, add a `>` in front of a paragraph.
-
-> Dorothy followed her through many of the beautiful rooms in her castle.
-
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
-```
-
-### Multiline
-
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
-
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
-```
-
-### LaTeX
-
-Mintlify supports [LaTeX](https://www.latex-project.org) through the Latex component.
-
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
-
-```md
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
-```

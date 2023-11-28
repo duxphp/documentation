@@ -1,0 +1,81 @@
+---
+title: '基础语法'
+description: 'DuxCMS Next 使用 latte 作为模板引擎，则可查看 [latte](https://latte.nette.org/en/tags#toc-var-default) 文档获取全部标签的使用方法，下面介绍 DuxCMS 中常用的标签。'
+---
+
+## 变量
+
+我们把一些数据给于一个定义后的代号，这个代号叫做变量，定义的过程叫做赋值。
+
+下面文档中 `var` 为变量名称，与原生 PHP 语法一致，通过 $var 来调用变量。
+
+
+### 变量赋值
+
+变量值可以是任意的数据，如：字符串、数字、数组、对象等。
+
+```latte
+{var $var = 我是变量内容}
+```
+
+
+### 变量输出
+
+使用该标签输出变量值到页面中，语法与php语法一致使用 `{}` 进行包裹。
+
+#### 普通变量
+```latte
+变量内容为：{$var}
+```
+
+#### 数组变量
+```latte
+{var $var = ['name' => '名称']}
+
+name 为：{$var['name']}
+```
+
+#### 对象变量
+```latte
+{var $var = \App\Content\Service\Article::info(1)}
+
+文章标题为：{$var->title}
+```
+
+#### 函数变量
+
+```latte
+{date('Y')}年
+```
+
+## 逻辑
+
+用于常规的判断等使用。
+
+### 逻辑判断
+
+使用逻辑运算符 `==` `!=` `>` `<` `>=` `<=` 等来进行逻辑判断。
+
+```latte
+{var $var = 1}
+
+{if $var == 1}
+	等于1
+{elseif $var == 2}
+	等于2
+{else}
+	不等于1或者2
+{/if}
+```
+
+### 逻辑标签
+
+我们可以采用 html 属性式的语法来进行判断。
+
+```latte
+{var $var = 1}
+
+<div n:if="$var == 1">等于1</div>
+<div n:else>不等于1</div>
+```
+

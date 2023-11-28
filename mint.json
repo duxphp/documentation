@@ -30,8 +30,12 @@
   },
   "tabs": [
     {
+      "name": "模板标签",
+      "url": "label"
+    },
+    {
       "name": "API 接口",
-      "url": "api-reference"
+      "url": "api"
     }
   ],
   "anchors": [
@@ -61,15 +65,19 @@
       "pages": ["use/base", "use/article", "use/menu", "use/page", "use/setting", "use/theme", "use/authority", "use/backup", "use/faq"]
     },
     {
+      "group": "模板开发",
+      "pages": ["label/introduction", "label/base"]
+    },
+    {
       "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
+      "pages": ["api/introduction"]
     },
     {
       "group": "Endpoint Examples",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api/endpoint/get",
+        "api/endpoint/create",
+        "api/endpoint/delete"
       ]
     }
   ],

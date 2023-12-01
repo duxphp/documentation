@@ -1,0 +1,149 @@
+---
+title: 文章标签
+description: 使用该系列标签可调用文章列表或文章分类、详情等数据到模板。
+---
+
+## 文章列表
+
+基础调用示例，默认会调用 `20` 条文章，其中 `$list` 为被赋值的列表数据变量，后面的方法则为文章数据调用。
+
+```latte
+调用文章列表，并且赋值给 $list 变量。
+{var $list = \App\Content\Service\Article::list()}
+
+循环出文章列表
+{foreach $list as $vo}
+	<div>文章标题：{$vo->title}</div>
+{/foreach}
+
+```
+
+### 基础条件
+
+我们可以给文章列表中传递不同的 sql 条件数组来获取不同条件的数据。
+
+### 按照分类
+
+示例调用分类 id 为 1 的文章列表，如下：
+
+```latte
+{var $list = \App\Content\Service\Article::list(['class_id' => 1])}
+```
+
+当然你也可以使用变量作为条件值：
+
+```latte
+{var $classId = 1}
+{var $list = \App\Content\Service\Article::list(['class_id' => $classId])}
+```
+
+### 调用条数
+
+文章列表方法的第二个参数为调用数量，如下调用 10 条数据：
+
+```latte
+{var $list = \App\Content\Service\Article::list([], 10)}
+```
+
+### 文章链接
+
+如果文章详情页面模板为 `article-info.latte` 则文章详情页面链接为 /page/article/ `id`。
+
+<Tip>你可以设置不同的模板名称，这样需要链接也使用模板的名称。</Tip>
+
+```latte
+{foreach $list as $vo}
+	<a href='/page/article/{$vo->id}'>{$vo->title}</a>
+{/foreach}
+```
+
+
+## 文章分页
+
+在需要分页的页面可以使用文章分页标签来调用分页数据，默认为每页 20 条。
+
+<Tip>一个页面仅允许一个分页列表，多个分页列表将会共享当前页码。</Tip>
+```latte
+{var $data = \App\Content\Service\Article::page()}
+
+<div>
+  {foreach $data as $vo}
+    <div>文章标题：{$vo->title}</div>
+  {/foreach}
+</div>
+
+<div>分页链接：{{ $users->links() }}</div>
+```
+
+## 文章详情
+
+可以配合详情模板来调用单篇文章数据，详情模板默认可直接使用 `$id` 变量来获取到当前文章 ID。
+
+<Tip>通过文章列表配合文章链接跳转到详情页面。</Tip>
+
+```latte
+{var $info = \App\Content\Service\Article::list($id)}
+<h1>文章标题：{$info->title}</h1>
+```
+
+## 高级查询
+
+少数情况下需要自行控制数据查询和条件，可以使用以下标签来获取原始 ORM 对象：
+
+<Tip> ORM 使用了 [Eloquent ORM](https://learnku.com/docs/laravel/10.x/eloquent/14888) 作为数据库查询，你可以使用全部查询方法。</Tip>
+
+```latte
+{var $query = \App\Content\Service\Article::query($where = [])}
+```
+
+
+## 调用字段
+
+循环文章列表内可以调用除文章内的各种字段。
+
+### 基础字段
+
+基础字段为文章的基本字段数据。
+
+| 调用名     | 类型   | 说明      |
+| -----     | ----- | --------  |
+| id     | 整数 | 文章 ID   |
+| title     | 字符串 | 文章标题    |
+| subtitle  | 字符串 | 文章副标题  |
+| images    | 数组   | 封面组图  |
+| content   | 字符串 | 文章正文  |
+| source  | 字符串 | 文章来源  |
+| virtual_view  | 整数 | 虚拟访问量  |
+| view  | 整数 | 访问量  |
+| collect  | 整数 | 收藏量  |
+| comment  | 整数 | 评论量  |
+
+### 分类字段
+
+文章内可调用出文章分类的数据。
+
+
+| 调用名     | 类型   | 说明      |
+| -----     | ----- | --------  |
+| class_id  | 整数 | 分类ID  |
+| class->name  | 字符串 | 分类名称  |
+
+
+
+### 推荐位字段
+
+推荐位是多选项，所以这里需要使用循环来调用推荐位：
+
+```latte
+{foreach $vo->recommend as $v}
+	<div>推荐名：{$v->name}</div>
+{/foreach}
+```
+
+推荐位可用字段
+
+| 调用名     | 类型   | 说明      |
+| -----     | ----- | --------  |
+| id  | 整数 | 推荐位 ID  |
+| name  | 字符串 | 推荐位名  |
+

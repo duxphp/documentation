@@ -1,20 +1,51 @@
 ---
-title: '页面用法'
-description: 'DuxCMS Next 使用 latte 作为模板引擎，页面基础用法。'
+title: '页面标签'
+description: '使用页面标签可调用单篇独立的页面内容。'
 ---
 
-## 列表
+## 页面详情
 
-### 路由规则
-url `{$domain}/{模块名}`
+可建立任意模板名作为页面的路由。通过 `http://域名/模板名` 来访问页面，并且使用下面标签调用页面数据。
 
-### 页面使用
-在模板目录下添加 `{模块名}.latte` 文件
+```latte
+{var $name = '调用名'}
+{var $info = \App\Content\Service\Page::info($name)}
+<h1>页面标题：{$info->title}</h1>
+```
 
-## 详情
+## 高级查询
 
-### 路由规则
-url `{$domain}/{模块名}/{id}`
+少数情况下需要自行控制数据查询和条件，可以使用以下标签来获取原始 ORM 对象：
 
-### 页面使用
-在模板目录下添加 `{模块名}-info.latte` 文件
+<Tip> ORM 使用了 [Eloquent ORM](https://learnku.com/docs/laravel/10.x/eloquent/14888) 作为数据库查询，你可以使用全部查询方法。</Tip>
+
+```latte
+{var $query = \App\Content\Service\Page::query($where = [])}
+```
+
+
+### 调用字段
+
+基础字段为页面的基本字段数据。
+
+| 调用名     | 类型   | 说明      |
+| -----     | ----- | --------  |
+| id     | 整数 | 页面 ID   |
+| name     | 字符串 | 调用名   |
+| title     | 字符串 | 页面标题    |
+| subtitle  | 字符串 | 页面副标题  |
+| image    | 数组   | 页面主图  |
+| content   | 字符串 | 页面正文  |
+| virtual_view  | 整数 | 虚拟访问量  |
+| view  | 整数 | 访问量  |
+
+
+## 使用技巧
+
+### 调用浏览量
+
+使用虚拟访问量加真实访问量可以调用浏览量。
+
+```latte
+{$info->virtual_view + $info->view}
+```

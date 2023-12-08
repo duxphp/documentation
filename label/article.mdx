@@ -82,7 +82,7 @@ description: 使用该系列标签可调用文章列表或文章分类、详情�
 <Tip>通过文章列表配合文章链接跳转到详情页面。</Tip>
 
 ```latte
-{var $info = \App\Content\Service\Article::list($id)}
+{var $info = \App\Content\Service\Article::info($id)}
 <h1>文章标题：{$info->title}</h1>
 ```
 

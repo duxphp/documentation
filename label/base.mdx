@@ -79,3 +79,23 @@ name 为：{$var['name']}
 <div n:else>不等于1</div>
 ```
 
+
+## 循环
+
+用于将数组进行循环。
+
+### 数组循环
+
+```latte
+{var $items = [
+	[
+		"name" => "one",
+	],
+	[
+		"name" => "tow",
+	]
+]}
+{foreach $items as $item}
+	<a>{$item['one']}</a>
+{/foreach}
+```

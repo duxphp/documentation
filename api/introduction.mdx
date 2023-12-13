@@ -1,33 +1,97 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: '基础介绍'
+description: 'DuxCMS 采用 restful api 风格的接口路由，并且每次请求都需要进行接口签名认证，以提高安全性，使用 api 可以将前端应用轻松接入到本系统中。'
 ---
 
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  推荐在使用签名的同时使用 ssl 进行接口数据传输，已达到更好的安全性需求。
 </Note>
 
-## Welcome
+## 签名说明
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+DuxCMS Api 签名使用 http headers 传输签名后的参数。
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
 
-## Authentication
+### 签名内容
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+内容格式如下：
+
+```
+请求路径\n
+params1=a&params2=b\n
+10位时间戳
+```
+
+1. 请求路径，不包含域名，如 /content/article
+2. 请求参数，如果不存在请留空，否则为 url 转义前参数
+3. 时间戳，unix 10 位时间戳
+
+签名内容使用 "\n" 换行符进行拼接。
+
+### 签名字符串
+
+
+```
+HMAC_256("签名内容", "Api密钥")
+```
+
+Api 密钥请在后台的接口管理中添加获取，请根据对应语言针对签名内容进行"HMAC 256加密"生成签名字符串。
+
+### 请求结构体
+
+请讲签名后的字符串带入到请求头中，示例如下：
+
+```
+GET:
+https://example.test/content/article?params1=a&params2=b
+
+HEADERS:
+Content-Date: 10位时间戳
+Content-MD5: 签名字符串
+AccessKey: Api ID
+
+BODY:
+...
+
+```
+
+1. Content-Date 与签名时使用的时间戳须一致。
+2. Content-MD5 通过 "HMAC 256" 加密后的签名字符串。
+3. AccessKey 后台接口管理中添加获取的Api ID。
+
+### 签名成功
+
+签名成功后将会收到正确的返回数据，如果签名失败则会收到 402 或者 408 状态码。
+
+
+## 请求成功
+
+请求成功后将会收到 http 状态码为 200，同时返回以下 json 结构。
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+{
+  "code": 200,
+  "message": "ok",
+  "data": {},
+  "meta": {}
+}
 ```
+
+1. code 状态码与 http 状态码保持一致，
+2. message 成功消息
+3. data 成功后的主体数据，根据请求的结果为对象或者数据。
+4. meta 元数据，一般为非主体数据，如分页信息、附加数据等。
+
+## 请求失败
+
+请求失败后将会收到 http 状态码为非 200，同时返回以下 json 结构，如果没有以下结构则需要首先处理 http 中的请求异常信息。
+
+
+```json
+{
+  "code": 500,
+  "message": "文章不存在"
+}
+```
+1. code 状态码与 http 状态码保持一致，
+2. message 失败提示消息。

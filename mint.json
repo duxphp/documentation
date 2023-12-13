@@ -66,14 +66,14 @@
     },
     {
       "group": "模板开发",
-      "pages": ["label/introduction", "label/base", "label/article", "label/page"]
+      "pages": ["label/introduction", "label/base", "label/config", "label/article", "label/page"]
     },
     {
-      "group": "API Documentation",
+      "group": "API 文档",
       "pages": ["api/introduction"]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "文章接口",
       "pages": [
         "api/endpoint/get",
         "api/endpoint/create",

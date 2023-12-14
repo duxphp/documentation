@@ -7,6 +7,28 @@ description: 'DuxCMS 采用 restful api 风格的接口路由，并且每次请�
   推荐在使用签名的同时使用 ssl 进行接口数据传输，已达到更好的安全性需求。
 </Note>
 
+
+## 请求说明
+
+### 基础 url
+
+基础请求的 url 为 `/api/` 开头的路径。
+
+```
+http://example.text/api/
+```
+
+### 数据格式
+
+您可以使用 xml、json 等格式进行请求，请求的内容请使用请求头 `Content-Type` 设置，请求的结果请使用 `Accept` 来获得期望数据格式，未设置则返回 html 格式，如虾：
+
+```
+HEADERS
+
+Content-Type: application/json
+Accept: application/json
+```
+
 ## 签名说明
 
 DuxCMS Api 签名使用 http headers 传输签名后的参数。

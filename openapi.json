@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.1.0",
   "info": {
     "title": "DuxCMS",
     "description": "",
@@ -81,58 +81,60 @@
                         "properties": {
                           "id": {
                             "type": "integer",
-                            "title": "文章 id"
+                            "description": "文章 id"
                           },
                           "class_name": {
                             "type": "string",
-                            "title": "分类名称"
+                            "description": "分类名称"
                           },
                           "title": {
                             "type": "string",
-                            "title": "文章标题"
+                            "description": "文章标题"
                           },
                           "subtitle": {
                             "type": "null",
-                            "title": "文章副标题"
+                            "description": "文章副标题"
                           },
                           "keywords": {
                             "type": "null",
-                            "title": "关键词"
+                            "description": "关键词"
                           },
                           "descriptions": {
                             "type": "string",
-                            "title": "描述"
+                            "description": "描述"
                           },
                           "images": {
                             "type": "array",
                             "items": {
                               "type": "string"
                             },
-                            "title": "封面图集"
+                            "description": "封面图集"
                           },
                           "source": {
                             "type": "null",
-                            "title": "来源"
+                            "description": "来源"
                           },
                           "source_avatar": {
                             "type": "null",
-                            "title": "来源头像"
+                            "description": "来源头像"
                           },
                           "view": {
                             "type": "integer",
-                            "title": "浏览量"
+                            "description": "浏览量"
                           },
                           "time": {
                             "type": "string",
-                            "title": "发布时间"
+                            "description": "发布时间"
                           },
                           "extend": {
-                            "type": "object",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
                             "properties": {},
-                            "title": "扩展字段",
                             "x-apifox-orders": [],
-                            "x-apifox-ignore-properties": [],
-                            "nullable": true
+                            "description": "扩展字段",
+                            "x-apifox-ignore-properties": []
                           }
                         },
                         "x-apifox-orders": [
@@ -160,11 +162,11 @@
                       "properties": {
                         "total": {
                           "type": "integer",
-                          "title": "总数量"
+                          "description": "总数量"
                         },
                         "page": {
                           "type": "integer",
-                          "title": "当前页码"
+                          "description": "当前页码"
                         }
                       },
                       "required": [
@@ -300,54 +302,56 @@
                       "properties": {
                         "id": {
                           "type": "integer",
-                          "title": "文章 id"
+                          "description": "文章 id"
                         },
                         "source": {
                           "type": "null",
-                          "title": "来源名称"
+                          "description": "来源名称"
                         },
                         "source_avatar": {
                           "type": "null",
-                          "title": "来源头像"
+                          "description": "来源头像"
                         },
                         "title": {
                           "type": "string",
-                          "title": "文章标题"
+                          "description": "文章标题"
                         },
                         "keywords": {
                           "type": "null",
-                          "title": "关键词"
+                          "description": "关键词"
                         },
                         "descriptions": {
                           "type": "string",
-                          "title": "描述"
+                          "description": "描述"
                         },
                         "content": {
                           "type": "string",
-                          "title": "正文内容"
+                          "description": "正文内容"
                         },
                         "images": {
                           "type": "array",
                           "items": {
                             "type": "string"
                           },
-                          "title": "封面图集"
+                          "description": "封面图集"
                         },
                         "view": {
                           "type": "integer",
-                          "title": "浏览量"
+                          "description": "浏览量"
                         },
                         "time": {
                           "type": "string",
-                          "title": "发布时间"
+                          "description": "发布时间"
                         },
                         "extend": {
-                          "type": "object",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
                           "properties": {},
-                          "title": "扩展数据",
                           "x-apifox-orders": [],
-                          "x-apifox-ignore-properties": [],
-                          "nullable": true
+                          "description": "扩展数据",
+                          "x-apifox-ignore-properties": []
                         }
                       },
                       "required": [
@@ -505,19 +509,23 @@
                             "type": "object",
                             "properties": {
                               "id": {
-                                "type": "integer"
+                                "type": "integer",
+                                "description": "分类 id"
                               },
                               "name": {
-                                "type": "string"
+                                "type": "string",
+                                "description": "分类名称"
                               },
                               "_lft": {
-                                "type": "integer"
+                                "type": "integer",
+                                "description": " 二叉树"
                               },
                               "_rgt": {
                                 "type": "integer"
                               },
                               "parent_id": {
-                                "type": "null"
+                                "type": "null",
+                                "description": "上级分类 id"
                               },
                               "created_at": {
                                 "type": "string"
@@ -532,10 +540,10 @@
                                 "type": "array",
                                 "items": {
                                   "type": "string"
-                                }
+                                },
+                                "description": "下级数据"
                               }
                             },
-                            "x-apifox-ignore-properties": [],
                             "x-apifox-orders": [
                               "id",
                               "name",
@@ -546,17 +554,18 @@
                               "updated_at",
                               "magic_id",
                               "children"
-                            ]
+                            ],
+                            "x-apifox-ignore-properties": []
                           }
                         }
                       },
                       "required": [
                         "list"
                       ],
-                      "x-apifox-ignore-properties": [],
                       "x-apifox-orders": [
                         "list"
-                      ]
+                      ],
+                      "x-apifox-ignore-properties": []
                     },
                     "meta": {
                       "type": "array",
@@ -571,13 +580,13 @@
                     "data",
                     "meta"
                   ],
-                  "x-apifox-ignore-properties": [],
                   "x-apifox-orders": [
                     "code",
                     "message",
                     "data",
                     "meta"
-                  ]
+                  ],
+                  "x-apifox-ignore-properties": []
                 },
                 "examples": {
                   "1": {

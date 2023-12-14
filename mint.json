@@ -75,12 +75,13 @@
     {
       "group": "文章接口",
       "pages": [
-        "api/endpoint/get",
-        "api/endpoint/create",
-        "api/endpoint/delete"
+        "api/content/class",
+        "api/content/list",
+        "api/content/info"
       ]
     }
   ],
+  "openapi": "/openapi.json",
   "footerSocials": {
     "github": "https://github.com/duxweb"
   }

@@ -1,0 +1,621 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "DuxCMS",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "内容"
+    }
+  ],
+  "paths": {
+    "/content/article": {
+      "get": {
+        "summary": "文章列表",
+        "x-apifox-folder": "内容",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "内容"
+        ],
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "分类 id",
+            "required": false,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "example": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZW1iZXIiLCJpYXQiOjE2OTk5NDg3ODYsImV4cCI6MTcwMjU0MDc4NiwiaWQiOjgsInBhc3N3b3JkIjoiJDJ5JDEwJDNjc3ZFM0xMN01aOWRUSGk0dWJlZ3Vqd3J6M25vMnVhYmdhUHd3TEdSVzg3NWFEU0NcL1JTUyJ9.yL2N-o6WJZUZOdlpIdfN8kbLSdkAhTW49FwdKYR0Gjo",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "title": "文章 id"
+                          },
+                          "class_name": {
+                            "type": "string",
+                            "title": "分类名称"
+                          },
+                          "title": {
+                            "type": "string",
+                            "title": "文章标题"
+                          },
+                          "subtitle": {
+                            "type": "null",
+                            "title": "文章副标题"
+                          },
+                          "keywords": {
+                            "type": "null",
+                            "title": "关键词"
+                          },
+                          "descriptions": {
+                            "type": "string",
+                            "title": "描述"
+                          },
+                          "images": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "title": "封面图集"
+                          },
+                          "source": {
+                            "type": "null",
+                            "title": "来源"
+                          },
+                          "source_avatar": {
+                            "type": "null",
+                            "title": "来源头像"
+                          },
+                          "view": {
+                            "type": "integer",
+                            "title": "浏览量"
+                          },
+                          "time": {
+                            "type": "string",
+                            "title": "发布时间"
+                          },
+                          "extend": {
+                            "type": "object",
+                            "properties": {},
+                            "title": "扩展字段",
+                            "x-apifox-orders": [],
+                            "x-apifox-ignore-properties": [],
+                            "nullable": true
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "id",
+                          "class_name",
+                          "title",
+                          "subtitle",
+                          "keywords",
+                          "descriptions",
+                          "images",
+                          "source",
+                          "source_avatar",
+                          "view",
+                          "time",
+                          "extend"
+                        ],
+                        "required": [
+                          "extend"
+                        ],
+                        "x-apifox-ignore-properties": []
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "title": "总数量"
+                        },
+                        "page": {
+                          "type": "integer",
+                          "title": "当前页码"
+                        }
+                      },
+                      "required": [
+                        "total",
+                        "page"
+                      ],
+                      "x-apifox-orders": [
+                        "total",
+                        "page"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data",
+                    "meta"
+                  ],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data",
+                    "meta"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 200,
+                      "message": "ok",
+                      "data": [
+                        {
+                          "id": 1,
+                          "class_name": "默认分类",
+                          "title": "欢迎使用 duxcms 内容管理系统",
+                          "subtitle": null,
+                          "keywords": null,
+                          "descriptions": "duxcms 是一款简单、易用强大的内容管理系统。",
+                          "images": [],
+                          "source": null,
+                          "source_avatar": null,
+                          "view": 0,
+                          "time": "2023-12-14 15:18:32",
+                          "collect": 0,
+                          "comment": 0,
+                          "praise": 0,
+                          "extend": null
+                        }
+                      ],
+                      "meta": {
+                        "total": 1,
+                        "page": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3536196/apis/api-122230340-run",
+        "security": []
+      }
+    },
+    "/content/article/{id}": {
+      "get": {
+        "summary": "文章详情",
+        "x-apifox-folder": "内容",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "内容"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "文章 id",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "example": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZW1iZXIiLCJpYXQiOjE2OTk5NDg3ODYsImV4cCI6MTcwMjU0MDc4NiwiaWQiOjgsInBhc3N3b3JkIjoiJDJ5JDEwJDNjc3ZFM0xMN01aOWRUSGk0dWJlZ3Vqd3J6M25vMnVhYmdhUHd3TEdSVzg3NWFEU0NcL1JTUyJ9.yL2N-o6WJZUZOdlpIdfN8kbLSdkAhTW49FwdKYR0Gjo",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "title": "文章 id"
+                        },
+                        "source": {
+                          "type": "null",
+                          "title": "来源名称"
+                        },
+                        "source_avatar": {
+                          "type": "null",
+                          "title": "来源头像"
+                        },
+                        "title": {
+                          "type": "string",
+                          "title": "文章标题"
+                        },
+                        "keywords": {
+                          "type": "null",
+                          "title": "关键词"
+                        },
+                        "descriptions": {
+                          "type": "string",
+                          "title": "描述"
+                        },
+                        "content": {
+                          "type": "string",
+                          "title": "正文内容"
+                        },
+                        "images": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "title": "封面图集"
+                        },
+                        "view": {
+                          "type": "integer",
+                          "title": "浏览量"
+                        },
+                        "time": {
+                          "type": "string",
+                          "title": "发布时间"
+                        },
+                        "extend": {
+                          "type": "object",
+                          "properties": {},
+                          "title": "扩展数据",
+                          "x-apifox-orders": [],
+                          "x-apifox-ignore-properties": [],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "source",
+                        "source_avatar",
+                        "title",
+                        "keywords",
+                        "descriptions",
+                        "content",
+                        "images",
+                        "view",
+                        "time",
+                        "extend"
+                      ],
+                      "x-apifox-orders": [
+                        "id",
+                        "source",
+                        "source_avatar",
+                        "title",
+                        "keywords",
+                        "descriptions",
+                        "content",
+                        "images",
+                        "view",
+                        "time",
+                        "extend"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    },
+                    "meta": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data",
+                    "meta"
+                  ],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data",
+                    "meta"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 200,
+                      "message": "ok",
+                      "data": {
+                        "id": 1,
+                        "source": null,
+                        "source_avatar": null,
+                        "title": "欢迎使用 duxcms 内容管理系统",
+                        "keywords": null,
+                        "descriptions": "duxcms 是一款简单、易用强大的内容管理系统。",
+                        "content": "<div class=\"typo\" style=\"font-size: 18px; line-height: 1.8em; letter-spacing: .1em;\"><p style=\"margin: 1.5em 5px;\">duxcms 是一款简单、易用强大的内容管理系统。</p></div>",
+                        "images": [],
+                        "view": 1,
+                        "time": "2023-12-14 15:18:32",
+                        "collect": 0,
+                        "comment": 0,
+                        "praise": 0,
+                        "extend": null
+                      },
+                      "meta": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3536196/apis/api-122230344-run",
+        "security": []
+      }
+    },
+    "/content/category": {
+      "get": {
+        "summary": "文章分类",
+        "x-apifox-folder": "内容",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "内容"
+        ],
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "example": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZW1iZXIiLCJpYXQiOjE2OTk5NDg3ODYsImV4cCI6MTcwMjU0MDc4NiwiaWQiOjgsInBhc3N3b3JkIjoiJDJ5JDEwJDNjc3ZFM0xMN01aOWRUSGk0dWJlZ3Vqd3J6M25vMnVhYmdhUHd3TEdSVzg3NWFEU0NcL1JTUyJ9.yL2N-o6WJZUZOdlpIdfN8kbLSdkAhTW49FwdKYR0Gjo",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "_lft": {
+                                "type": "integer"
+                              },
+                              "_rgt": {
+                                "type": "integer"
+                              },
+                              "parent_id": {
+                                "type": "null"
+                              },
+                              "created_at": {
+                                "type": "string"
+                              },
+                              "updated_at": {
+                                "type": "string"
+                              },
+                              "magic_id": {
+                                "type": "null"
+                              },
+                              "children": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "x-apifox-ignore-properties": [],
+                            "x-apifox-orders": [
+                              "id",
+                              "name",
+                              "_lft",
+                              "_rgt",
+                              "parent_id",
+                              "created_at",
+                              "updated_at",
+                              "magic_id",
+                              "children"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "list"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "list"
+                      ]
+                    },
+                    "meta": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data",
+                    "meta"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data",
+                    "meta"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 200,
+                      "message": "ok",
+                      "data": {
+                        "list": [
+                          {
+                            "id": 1,
+                            "name": "默认分类",
+                            "_lft": 1,
+                            "_rgt": 2,
+                            "parent_id": null,
+                            "created_at": "2023-12-14T07:18:05.000000Z",
+                            "updated_at": "2023-12-14T07:18:05.000000Z",
+                            "magic_id": null,
+                            "children": []
+                          }
+                        ]
+                      },
+                      "meta": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3536196/apis/api-122230400-run",
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {}
+  },
+  "servers": []
+}

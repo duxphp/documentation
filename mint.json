@@ -34,24 +34,24 @@
     },
     {
       "name": "API 接口",
-      "url": "api"
+      "url": "api-playground"
     }
   ],
   "anchors": [
     {
       "name": "阅读文档",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "url": "/introduction"
     },
     {
       "name": "官方网站",
       "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "url": "https://www.dux.cn"
     },
     {
       "name": "应用市场",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://www.dux.cn/apps"
     }
   ],
   "navigation": [
@@ -69,19 +69,19 @@
     },
     {
       "group": "API 文档",
-      "pages": ["api/introduction"]
+      "pages": ["api-playground/introduction"]
     },
     {
       "group": "文章接口",
       "pages": [
-        "api/content/class",
-        "api/content/list",
-        "api/content/info"
+        "api-playground/content/class",
+        "api-playground/content/list",
+        "api-playground/content/info"
       ]
     }
   ],
   "$schema": "https://mintlify.com/schema.json",
-  "openapi": "/api/openapi.json",
+  "openapi": "/api-playground/openapi.json",
   "footerSocials": {
     "github": "https://github.com/duxweb"
   }

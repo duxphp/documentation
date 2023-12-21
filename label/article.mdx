@@ -9,7 +9,7 @@ description: 使用该系列标签可调用文章列表或文章分类、详情�
 
 ```latte
 调用文章列表，并且赋值给 $list 变量。
-{var $list = \App\Content\Service\Article::list()}
+{var $list = \App\Content\Service\Article::lists()}
 
 循环出文章列表
 {foreach $list as $vo}
@@ -27,14 +27,14 @@ description: 使用该系列标签可调用文章列表或文章分类、详情�
 示例调用分类 id 为 1 的文章列表，如下：
 
 ```latte
-{var $list = \App\Content\Service\Article::list(['class_id' => 1])}
+{var $list = \App\Content\Service\Article::lists(['class_id' => 1])}
 ```
 
 当然你也可以使用变量作为条件值：
 
 ```latte
 {var $classId = 1}
-{var $list = \App\Content\Service\Article::list(['class_id' => $classId])}
+{var $list = \App\Content\Service\Article::lists(['class_id' => $classId])}
 ```
 
 ### 调用条数
@@ -42,7 +42,7 @@ description: 使用该系列标签可调用文章列表或文章分类、详情�
 文章列表方法的第二个参数为调用数量，如下调用 10 条数据：
 
 ```latte
-{var $list = \App\Content\Service\Article::list([], 10)}
+{var $list = \App\Content\Service\Article::lists([], 10)}
 ```
 
 ### 文章链接

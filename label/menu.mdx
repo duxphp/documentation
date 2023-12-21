@@ -1,0 +1,39 @@
+---
+title: 菜单标签
+description: 使用该标签可调用层级菜单。
+---
+
+## 菜单列表
+
+基础调用示例，根据菜单名调用树形数组。
+
+```latte
+调用菜单列表，并且赋值给 $list 变量。
+{var $list = \App\Content\Service\Menu::lists(['menu_id' => 1])}
+
+循环出菜单列表
+{foreach $list as $vo}
+	<div>菜单标题：{$vo->title}</div>
+{/foreach}
+
+```
+
+### 基础条件
+
+我们可以给菜单列表中传递不同的 sql 条件数组来获取不同条件的数据。
+
+### 按照菜单分组
+
+示例调用分类 id 为 1 的菜单列表，如下：
+
+```latte
+{var $list = \App\Content\Service\Menu::lists(['menu_id' => 1])}
+```
+
+当然你也可以使用变量作为条件值：
+
+```latte
+{var $menuId = 1}
+{var $list = \App\Content\Service\Menu::lists(['menu_id' => $menuId])}
+```
+

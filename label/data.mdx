@@ -1,0 +1,64 @@
+---
+title: 数据魔方
+description: 使用该标签来调用魔方中的数据。
+---
+
+## 数据列表
+
+基础调用示例，根据数据名调用树形数组。
+
+```latte
+调用数据列表，并且赋值给 $list 变量。
+{var $list = \App\Tools\Service\Data::lists('main')}
+
+循环出数据列表
+{foreach $list as $vo}
+	<div>数据标题：{$vo->title}</div>
+{/foreach}
+
+```
+
+
+## 数据分页
+
+在需要分页的页面可以使用数据分页标签来调用分页数据，默认为每页 20 条。
+
+<Tip>一个页面仅允许一个分页列表，多个分页列表将会共享当前页码。</Tip>
+```latte
+{var $data = \App\Tools\Service\Data::page('main')}
+
+<div>
+  {foreach $data as $vo}
+    <div>标题：{$vo->title}</div>
+  {/foreach}
+</div>
+
+<div>链接：{{ $users->links() }}</div>
+```
+
+## 数据详情
+
+如果魔方类型喂单页数据或者调用数据详情可使用如下标签：
+
+```latte
+根据数据 id 调用详情
+{var $info = \App\Tools\Service\Data::info(1)}
+<h1>标题：{$info->title}</h1>
+```
+
+```latte
+调用单页数据
+{var $info = \App\Tools\Service\Data::info(name: 'main')}
+<h1>标题：{$info->title}</h1>
+```
+
+### 基础条件
+
+我们可以给数据列表中传递不同的 sql 条件数组来获取不同条件的数据。
+
+```php
+\App\Content\Service\Menu::lists(where: ['data->status' => 1])
+\App\Content\Service\Menu::info(where: ['data->status' => 1])
+```
+
+

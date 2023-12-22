@@ -9,7 +9,7 @@ description: 使用该标签可调用层级菜单。
 
 ```latte
 调用菜单列表，并且赋值给 $list 变量。
-{var $list = \App\Content\Service\Menu::lists(['menu_id' => 1])}
+{var $list = \App\Content\Service\Menu::lists('main')}
 
 循环出菜单列表
 {foreach $list as $vo}
@@ -24,16 +24,16 @@ description: 使用该标签可调用层级菜单。
 
 ### 按照菜单分组
 
-示例调用分类 id 为 1 的菜单列表，如下：
+示例调用菜单组名为 main 的菜单列表，如下：
 
 ```latte
-{var $list = \App\Content\Service\Menu::lists(['menu_id' => 1])}
+{var $list = \App\Content\Service\Menu::lists('main')}
 ```
 
 当然你也可以使用变量作为条件值：
 
 ```latte
-{var $menuId = 1}
-{var $list = \App\Content\Service\Menu::lists(['menu_id' => $menuId])}
+{var $name = 'main'}
+{var $list = \App\Content\Service\Menu::lists($name)}
 ```
 

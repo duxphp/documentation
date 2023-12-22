@@ -65,7 +65,7 @@
     },
     {
       "group": "模板开发",
-      "pages": ["label/introduction", "label/base", "label/config", "label/article", "label/page", "label/menu"]
+      "pages": ["label/introduction", "label/base", "label/config", "label/article", "label/page", "label/menu", "label/data"]
     },
     {
       "group": "API 文档",
